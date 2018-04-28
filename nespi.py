@@ -1,6 +1,6 @@
 #!/etc/systemd/system python3
 
-# NESPi Control Script V-1.0 alpha
+# NESPi Control Script V-1.1 alpha
 # Author: beimklabautermann@mail.de
 # Date: 04/28/2018
 
@@ -36,8 +36,6 @@ def ConfigButton(show)
         GPIO.setup(capacitor, GPIO.OUT)
         GPIO.output(capacitor, GPIO.HIGH)
         sleep(2)
-    else:
-        capacitor = 'No connection to GPIO'
 
     if show:
         print('\tFrequenc to check Buttons:\t\t{}'.format(checkButton))
@@ -90,8 +88,7 @@ def pushButton(press)
     for count in range(3):
         print(end='.')
         sleep(0.5)
-
-    os._exit()
+        
 return()
 
 
@@ -110,7 +107,7 @@ def writeFan(power, loops):
 
     if loops:
         for count in range(loops):
-            print('|', '/ ', '-',  '\\', end='\b')[count-floor(count/4)*4, 4]
+            print('|', '/', '-',  '\\', end='\b')[count-floor(count/4)*4, 4]
 
             if power:
                 sleep(((count+1)*2)^-1)
